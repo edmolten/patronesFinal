@@ -47,7 +47,7 @@ if __name__ == "__main__":
     visualize_det = args['visualize']
 
     # Load the classifier
-    clf = joblib.load(model_path)
+    clf = joblib.load(MODEL_PATH)
 
     # List to store the detections
     detections = []

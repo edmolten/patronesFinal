@@ -41,7 +41,7 @@ if __name__ == "__main__":
         print "Training a Linear SVM Classifier"
         clf.fit(fds, labels)
         # If feature directories don't exist, create them
-        if not os.path.isdir(os.path.split(model_path)[0]):
-            os.makedirs(os.path.split(model_path)[0])
-        joblib.dump(clf, model_path)
-        print "Classifier saved to {}".format(model_path)
+        if not os.path.isdir(os.path.split(MODEL_PATH)[0]):
+            os.makedirs(os.path.split(MODEL_PATH)[0])
+        joblib.dump(clf, MODEL_PATH)
+        print "Classifier saved to {}".format(MODEL_PATH)
