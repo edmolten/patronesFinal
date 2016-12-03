@@ -1,7 +1,4 @@
-# Import the required modules
-from skimage.feature import local_binary_pattern
 from sklearn.svm import LinearSVC
-from sklearn.linear_model import LogisticRegression
 from sklearn.externals import joblib
 import argparse as ap
 import glob
@@ -13,14 +10,10 @@ if __name__ == "__main__":
     parser = ap.ArgumentParser()
     parser.add_argument('-p', "--posfeat", help="Path to the positive features directory", required=True)
     parser.add_argument('-n', "--negfeat", help="Path to the negative features directory", required=True)
-    parser.add_argument('-c', "--classifier", help="Classifier to be used", default="LIN_SVM")
     args = vars(parser.parse_args())
 
     pos_feat_path =  args["posfeat"]
     neg_feat_path = args["negfeat"]
-
-    # Classifiers supported
-    clf_type = args['classifier']
 
     fds = []
     labels = []
@@ -35,13 +28,13 @@ if __name__ == "__main__":
         fd = joblib.load(feat_path)
         fds.append(fd)
         labels.append(0)
-
-    if clf_type is "LIN_SVM":
-        clf = LinearSVC()
-        print "Training a Linear SVM Classifier"
-        clf.fit(fds, labels)
-        # If feature directories don't exist, create them
-        if not os.path.isdir(os.path.split(MODEL_PATH)[0]):
-            os.makedirs(os.path.split(MODEL_PATH)[0])
-        joblib.dump(clf, MODEL_PATH)
-        print "Classifier saved to {}".format(MODEL_PATH)
+    for x in fds:
+        print len(x)
+    clf = LinearSVC()
+    print "Training a Linear SVM Classifier"
+    clf.fit(fds, labels)
+    # If model directorie don't exist, create them
+    if not os.path.isdir(os.path.split(MODEL_PATH)[0]):
+        os.makedirs(os.path.split(MODEL_PATH)[0])
+    joblib.dump(clf, MODEL_PATH)
+    print "Classifier saved to {}".format(MODEL_PATH)

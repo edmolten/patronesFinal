@@ -1,5 +1,4 @@
-# Import the required modules
-from skimage.transform import pyramid_gaussian
+from skimage.transform import pyramid_gaussian,resize
 from skimage.io import imread
 from skimage.feature import hog
 from sklearn.externals import joblib
@@ -40,8 +39,8 @@ if __name__ == "__main__":
     args = vars(parser.parse_args())
 
     # Read the image
-    im = imread(args["image"], as_grey=False)
-    min_wdw_sz = (100, 40)
+    im = imread(args["image"], as_grey=True)
+    min_wdw_sz = (150, 150)
     step_size = (10, 10)
     downscale = args['downscale']
     visualize_det = args['visualize']
