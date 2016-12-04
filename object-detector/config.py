@@ -8,7 +8,7 @@ TESTING_PATH = "C:/Users/eddox/Desktop/Testing"
 COLLAGES_PATH = "C:/Users/eddox/Desktop/Collages"
 POSITIVE_FEATURES_OUTPUT_PATH = "C:\Users\eddox\Desktop/Features/pos"
 NEGATIVE_FEATURES_OUTPUT_PATH = "C:\Users\eddox\Desktop/Features/neg"
-MODEL_PATH = PROJECT_PATH + "data/models/svm.model"
+MODEL_PATH = "C:\Users\eddox\Desktop/Model"
 
 IMAGES_WIDTH = 150
 IMAGES_HEIGHT = 150
@@ -16,13 +16,14 @@ IMAGES_PER_CATEGORY = 2
 CATEGORIES = 101
 ROWS = 10
 COLUMNS = 21
+NEGATIVE_CATEGORIES_LIMIT = 2
 
 MIN_WINDOW_SIZE = [150, 150]
 STEP_SIZE = [150, 150]
 ORIENTATIONS = 9
 PIXELS_PER_CELL = [8, 8]
 CELLS_PER_BLOCK = [3, 3]
-VISUALIZE = True
+VISUALIZE = False
 NORMALIZE = True
 THRESHOLD = 0.3
 
