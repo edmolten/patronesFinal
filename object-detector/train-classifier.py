@@ -8,13 +8,13 @@ fds = []
 labels = []
 
 print "Loading the positive features"
-for feat_path in glob.glob(os.path.join(POSITIVE_FEATURES_OUTPUT_PATH,"*.feat")):
+for feat_path in glob.glob(os.path.join(POSITIVE_FEATURES_OUTPUT_PATH, "*.feat")):
     fd = joblib.load(feat_path)
     fds.append(fd)
     labels.append(1)
 
 print "Loading the negative features"
-for feat_path in glob.glob(os.path.join(NEGATIVE_FEATURES_OUTPUT_PATH,"*.feat")):
+for feat_path in glob.glob(os.path.join(NEGATIVE_FEATURES_OUTPUT_PATH, "*.feat")):
     fd = joblib.load(feat_path)
     fds.append(fd)
     labels.append(0)

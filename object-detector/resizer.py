@@ -11,6 +11,6 @@ for folder_path in glob.glob(os.path.join(ORIGINAL_DATASET_PATH, "*")):
     for image_path in glob.glob(os.path.join(folder_path, "*.jpg")):
         name = os.path.split(image_path)[1]
         image = Image.open(image_path)
-        image = image.resize((150,150),Image.LANCZOS)
-        image.save("{}/{}".format(output_path,name))
+        image = image.resize((150, 150), Image.LANCZOS)
+        image.save("{}/{}".format(output_path, name))
         image.close()
