@@ -1,30 +1,45 @@
 import glob
 import os
 from PIL import Image
+from config import *
+from random import shuffle
+
 paths = []
-IMAGES_PATH = "C:/Users/eddox/Desktop/SquareDataSet/airplanes"
+for folder_path in glob.glob(os.path.join(TESTING_PATH, "*")):
+    category = os.path.split(folder_path)[1]
+    category_paths = []
+    for im_path in glob.glob(os.path.join(folder_path,"*")):
+        category_paths.append(im_path)
+    shuffle(category_paths)
+    for i in range(IMAGES_PER_CATEGORY):
+        paths.append(category_paths[i])
+shuffle(paths)
+created_collages_paths = glob.glob(os.path.join(COLLAGES_PATH, "*.jpg"))
+name = "?"
+if len(created_collages_paths) == 0:
+    name = "1"
+else:
+    last_path = created_collages_paths[-1]
+    name = str(int(os.path.split(last_path)[1].split(".")[0]) + 1)
 
-for im_path in glob.glob(os.path.join(IMAGES_PATH,"*")):
-    paths.append(im_path)
-
-def create_collage():
-    cols = 80
-    rows = 10
-    collage = Image.new('RGB', (80*150, 10*150))
-    i = 0
-    x = 0
+collage = Image.new('RGB', (IMAGES_WIDTH*COLUMNS, IMAGES_HEIGHT*ROWS))
+i = 0
+x = 0
+y = 0
+stop = IMAGES_PER_CATEGORY * CATEGORIES
+for col in range(COLUMNS):
+    if i == stop:
+        break
+    for row in range(ROWS):
+        if i == stop:
+            break
+        image = Image.open(paths[i])
+        collage.paste(image, (x, y))
+        image.close()
+        i += 1
+        y += IMAGES_HEIGHT
+    x += IMAGES_WIDTH
     y = 0
-    for col in range(cols):
-        for row in range(rows):
-            print(i, x, y)
-            image = Image.open(paths[i])
-            collage.paste(image, (x, y))
-            image.close()
-            i += 1
-            y += 150
-        x += 150
-        y = 0
 
-    collage.save("C:/Users/eddox/Desktop/SquareDataSet/airplanes/Collage.jpg")
+collage.save("{}/{}.jpg".format(COLLAGES_PATH,name))
 
-#create_collage()

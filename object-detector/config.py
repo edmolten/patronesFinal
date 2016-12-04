@@ -8,8 +8,28 @@ ORIGINAL_DATASET_PATH = "C:/Users/eddox/Downloads/101_ObjectCategories"
 SQUARE_DATASET_PATH = "C:/Users/eddox/Desktop/SquareDataSet"
 TRAINING_PATH = "C:/Users/eddox/Desktop/Training"
 TESTING_PATH = "C:/Users/eddox/Desktop/Testing"
-working = False
+COLLAGES_PATH = "C:/Users/eddox/Desktop/Collages"
 
+
+IMAGES_WIDTH = 150
+IMAGES_HEIGHT = 150
+IMAGES_PER_CATEGORY = 2
+CATEGORIES = 101
+ROWS = 10
+COLUMNS = 21
+
+MIN_WINDOW_SIZE = [150, 150]
+STEP_SIZE = [150, 150]
+ORIENTATIONS = 9
+PIXELS_PER_CELL = [8, 8]
+CELLS_PER_BLOCK = [3, 3]
+VISUALIZE = True
+NORMALIZE = True
+THRESHOLD = 0.3
+
+CATEGORY_TO_TEST = "bonsai"
+
+working = False
 if working:
     DATA_PATH = "C:/Users/eddox/Downloads/CarData/"
     POSITIVE_DATA_PATH = DATA_PATH + "pos"
