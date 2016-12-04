@@ -8,7 +8,7 @@ TESTING_PATH = "C:/Users/eddox/Desktop/Testing"
 COLLAGES_PATH = "C:/Users/eddox/Desktop/Collages"
 POSITIVE_FEATURES_OUTPUT_PATH = "C:\Users\eddox\Desktop/Features/pos"
 NEGATIVE_FEATURES_OUTPUT_PATH = "C:\Users\eddox\Desktop/Features/neg"
-MODEL_PATH = "C:\Users\eddox\Desktop/Model"
+MODEL_PATH = "C:\Users\eddox\Desktop/Model/model"
 
 IMAGES_WIDTH = 150
 IMAGES_HEIGHT = 150
