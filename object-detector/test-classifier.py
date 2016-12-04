@@ -52,7 +52,7 @@ for im_scaled in pyramid_gaussian(im, downscale=DOWNSCALE):
         if im_window.shape[0] != MIN_WINDOW_SIZE[1] or im_window.shape[1] != MIN_WINDOW_SIZE[0]:
             continue
         # Calculate the HOG features
-        fd = hog(im_window, ORIENTATIONS, PIXELS_PER_CELL, CELLS_PER_BLOCK, True, NORMALIZE)
+        fd = hog(im_window, ORIENTATIONS, PIXELS_PER_CELL, CELLS_PER_BLOCK, False, NORMALIZE)
         pred = clf.predict(fd)
         if pred == 1:
             print  "Detection:: Location -> ({}, {})".format(x, y)
@@ -63,14 +63,14 @@ for im_scaled in pyramid_gaussian(im, downscale=DOWNSCALE):
             cd.append(detections[-1])
         # If visualize is set to true, display the working
         # of the sliding window
-        if True:
+        if VISUALIZE:
             clone = im_scaled.copy()
             for x1, y1, _, _, _  in cd:
                 # Draw the detections at this scale
                 cv2.rectangle(clone, (x1, y1), (x1 + im_window.shape[1], y1 +
-                    im_window.shape[0]), (0, 0, 0), thickness=2)
+                    im_window.shape[0]), (0, 255, 0), thickness=2)
             cv2.rectangle(clone, (x, y), (x + im_window.shape[1], y +
-                im_window.shape[0]), (255, 255, 255), thickness=2)
+                im_window.shape[0]), (255, 0, 0), thickness=2)
             cv2.imshow("Sliding Window in Progress", clone)
             cv2.waitKey(30)
     # Move the the next scale
@@ -80,7 +80,7 @@ for im_scaled in pyramid_gaussian(im, downscale=DOWNSCALE):
 clone = im.copy()
 for (x_tl, y_tl, _, w, h) in detections:
     # Draw the detections
-    cv2.rectangle(im, (x_tl, y_tl), (x_tl+w, y_tl+h), (0, 0, 0), thickness=2)
+    cv2.rectangle(im, (x_tl, y_tl), (x_tl+w, y_tl+h), (0, 255, 0), thickness=2)
 cv2.imshow("Raw Detections before NMS", im)
 cv2.waitKey()
 
@@ -90,6 +90,6 @@ detections = nms(detections, THRESHOLD)
 # Display the results after performing NMS
 for (x_tl, y_tl, _, w, h) in detections:
     # Draw the detections
-    cv2.rectangle(clone, (x_tl, y_tl), (x_tl+w,y_tl+h), (0, 0, 0), thickness=2)
+    cv2.rectangle(clone, (x_tl, y_tl), (x_tl+w,y_tl+h), (0, 255, 0), thickness=2)
 cv2.imshow("Final Detections after applying NMS", clone)
 cv2.waitKey()
