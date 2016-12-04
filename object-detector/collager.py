@@ -4,9 +4,34 @@ from PIL import Image
 from config import *
 from random import shuffle
 
+def getRandomImagesRoutes(n_categories, n_images, include):
+    paths = []
+    categories_paths = glob.glob(os.path.join(TESTING_PATH, "*"))
+    include_path = "?"
+    for path in categories_paths:
+        if include == os.path.split(path)[1]:
+            include_path = path
+            categories_paths.remove(include_path)
+    shuffle(categories_paths)
+    categories_paths = categories_paths[:n_categories-1]
+    categories_paths.append(include_path)
+    shuffle(categories_paths)
+    for folder_path in categories_paths:
+        this_category_images_paths = []
+        for im_path in glob.glob(os.path.join(folder_path, "*")):
+            this_category_images_paths.append(im_path)
+        shuffle(this_category_images_paths)
+        this_category_images_paths = this_category_images_paths[:n_images]
+        for i in range(IMAGES_PER_CATEGORY):
+            paths.append(this_category_images_paths[i])
+    shuffle(paths)
+    return paths
+
+getRandomImagesRoutes(1,1,1)
+
+'''
 paths = []
 for folder_path in glob.glob(os.path.join(TESTING_PATH, "*")):
-    category = os.path.split(folder_path)[1]
     category_paths = []
     for im_path in glob.glob(os.path.join(folder_path,"*")):
         category_paths.append(im_path)

@@ -46,12 +46,14 @@ def extract(input_paths, output_path):
     i = 0
     for im_path in input_paths:
         im = imread(im_path, as_grey=True)
+
         fd = hog(im, ORIENTATIONS, PIXELS_PER_CELL, CELLS_PER_BLOCK, False, NORMALIZE)
         fd_name = os.path.split(im_path)[1].split(".")[0] + ".feat"
         fd_path = os.path.join(output_path, str(i) + fd_name)
         joblib.dump(fd, fd_path)
         i += 1
 '''
+        fd, hog_image = hog(im, ORIENTATIONS, PIXELS_PER_CELL, CELLS_PER_BLOCK, True, NORMALIZE)
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 4), sharex=True, sharey=True)
 
         ax1.axis('off')
@@ -65,7 +67,6 @@ def extract(input_paths, output_path):
         ax1.set_adjustable('box-forced')
         plt.show()
 '''
-
 
 # Create directories if don't exist
 if not os.path.isdir(POSITIVE_FEATURES_OUTPUT_PATH):
