@@ -26,13 +26,7 @@ CELLS_PER_BLOCK = [3, 3]
 VISUALIZE = False
 NORMALIZE = True
 THRESHOLD = 0.3
+DOWNSCALE = 1.25
 
 CATEGORY_TO_TEST = "bonsai"
-
-working = False
-if working:
-    TEST_IMAGE_PATH = "C:/Users/eddox/Downloads/CarData/TestImages/test-16.pgm"
-else:
-    TEST_IMAGE_PATH = "C:\Users\eddox\Desktop\image_0013.pgm"
-
-
+TEST_IMAGE_PATH = COLLAGES_PATH + "/1.jpg"

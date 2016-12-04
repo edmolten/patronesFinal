@@ -41,5 +41,5 @@ for col in range(COLUMNS):
     x += IMAGES_WIDTH
     y = 0
 
-collage.save("{}/{}.jpg".format(COLLAGES_PATH,name))
+collage.save("{}/{}.jpg".format(COLLAGES_PATH, name))
 

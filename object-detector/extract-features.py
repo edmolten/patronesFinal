@@ -9,7 +9,7 @@ from config import *
 def pos_and_neg_paths():
     pos_paths = []
     neg_paths = []
-    current_negative_category = 0;
+    current_negative_category = 0
     for folder_path in glob.glob(os.path.join(TRAINING_PATH, "*")):
         category = os.path.split(folder_path)[1]
         if category == CATEGORY_TO_TEST:
