@@ -77,11 +77,9 @@ def create_collage(paths, n_categories, n_images):
     collage.save("{}/{}.jpg".format(COLLAGES_PATH, name))
     print "Collage saves as " + "{}/{}.jpg".format(COLLAGES_PATH, name)
 
-n_images = 6
-category = CATEGORY_TO_TEST
-specific_cateogires = ['butterfly','barrel','cannon','sunflower']
-paths_specific = get_specific_categories_routes(specific_cateogires,n_images)
-n_categories = len(specific_cateogires)
-paths_random = get_random_images_routes(n_categories, n_images, category)
-paths_specific = get_specific_categories_routes(specific_cateogires,n_images)
-create_collage(paths_specific, n_categories, n_images)
+n_images = 4
+n_categories = 4
+specific_cateogires = ['butterfly','barrel','nautilus',CATEGORY_TO_TEST]
+#paths = get_random_images_routes(n_categories,n_images,CATEGORY_TO_TEST)
+paths = get_specific_categories_routes(specific_cateogires,n_images)
+create_collage(paths, n_categories, n_images)

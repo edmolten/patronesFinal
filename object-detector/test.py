@@ -18,14 +18,17 @@ except IOError:
 
 classifier = joblib.load(MODEL_PATH)
 detections = []
+confidences = []
 for (x, y, im_window) in sliding_window(im, WINDOW_SIZE, STEP_SIZE):
     # Calculate the HOG features
     fd = hog(im_window, ORIENTATIONS, PIXELS_PER_CELL, CELLS_PER_BLOCK, False, NORMALIZE)
     pred = classifier.predict(fd)
     if pred == 1:
-        print "Detection:: Location -> ({}, {})".format(x, y)
-        print "Confidence Score {} \n".format(classifier.decision_function(fd))
+        print "Detection at ({}, {})".format(x, y)
+        conf = classifier.decision_function(fd)
+        print "Confidence  {} \n".format(conf)
         detections.append((x, y))
+        confidences.append(conf)
     if VISUALIZE:
         clone = im.copy()
         for x1, y1 in detections:
@@ -39,3 +42,4 @@ for (x, y, im_window) in sliding_window(im, WINDOW_SIZE, STEP_SIZE):
         cv2.imshow("Sliding Window in Progress", clone)
         cv2.waitKey(10)
 cv2.waitKey()
+print("Average confidence: {}".format(sum(confidences)*1.0/len(confidences)))

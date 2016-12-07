@@ -130,7 +130,10 @@ if not os.path.isdir(POSITIVE_FEATURES_OUTPUT_PATH):
 if not os.path.isdir(NEGATIVE_FEATURES_OUTPUT_PATH):
     os.makedirs(NEGATIVE_FEATURES_OUTPUT_PATH)
 
-positive_paths, negative_paths = pos_and_neg_paths_using_specific(['butterfly','barrel','cannon'],20,'sunflower')
+specific_cateogires = ['butterfly','barrel','nautilus']
+
+positive_paths, negative_paths =  pos_and_neg_paths_using_specific(specific_cateogires,20, CATEGORY_TO_TEST)
+##pos_and_neg_paths(n_negative_images, n_negative_categories, category_to_test):
 #'''
 print "Calculating and saving the positive descriptors"
 extract(positive_paths, POSITIVE_FEATURES_OUTPUT_PATH)
