@@ -2,4 +2,4 @@
 import os
 from config import *
 
-os.system("{} {}object-detector/test-classifier.py -i {} --visualize".format(ANACONDA_PATH, PROJECT_PATH, TEST_IMAGE_PATH))
+os.system("{} {}object-detector/test.py -i {} --visualize".format(ANACONDA_PATH, PROJECT_PATH, TEST_IMAGE_PATH))
